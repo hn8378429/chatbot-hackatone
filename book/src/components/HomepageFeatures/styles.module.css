@@ -1,3 +1,4 @@
+/* styles.module.css */
 .features {
   display: flex;
   align-items: center;
@@ -8,4 +9,602 @@
 .featureSvg {
   height: 200px;
   width: 200px;
+}
+
+/* Premium Color Scheme - Futuristic & Vibrant */
+.featuresSection {
+  padding: 6rem 1rem;
+  background: 
+    radial-gradient(circle at 0% 0%, #0a0f29 0%, transparent 50%),
+    radial-gradient(circle at 100% 0%, #1a1f3a 0%, transparent 50%),
+    radial-gradient(circle at 50% 100%, #2d1b69 0%, transparent 50%),
+    linear-gradient(135deg, #000428 0%, #004e92 100%);
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.featuresSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.3;
+}
+
+.featuresSection::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 255, 255, 0.3) 20%, 
+    rgba(255, 20, 147, 0.3) 50%, 
+    rgba(0, 255, 255, 0.3) 80%, 
+    transparent 100%);
+  filter: blur(1px);
+}
+
+.featureCard {
+  background: rgba(16, 18, 27, 0.7);
+  backdrop-filter: blur(15px);
+  border-radius: 28px;
+  padding: 2.5rem 2rem;
+  height: 100%;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent);
+}
+
+.featureCard:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 
+    0 35px 80px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 40px rgba(0, 255, 255, 0.2);
+  border-color: rgba(0, 255, 255, 0.3);
+  background: rgba(20, 22, 35, 0.9);
+}
+
+.featureIcon {
+  width: 90px;
+  height: 90px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) padding-box,
+              linear-gradient(135deg, var(--gradient-start), var(--gradient-end)) border-box;
+}
+
+.featureCard:hover .featureIcon {
+  transform: scale(1.2) rotate(12deg);
+  animation: iconPulse 2s infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--gradient-start);
+  }
+  50% {
+    box-shadow: 0 0 40px var(--gradient-end);
+  }
+}
+
+.icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+}
+
+.featureContent {
+  position: relative;
+  z-index: 2;
+}
+
+.featureTitle {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #b0b7ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+  position: relative;
+  display: inline-block;
+}
+
+.featureTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  border-radius: 2px;
+}
+
+.featureDescription {
+  color: #a0a7c2;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  font-weight: 300;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.featureGlow {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(circle, var(--gradient-start) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  z-index: 0;
+  filter: blur(40px);
+}
+
+.glowActive {
+  opacity: 0.3;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 6rem;
+  position: relative;
+}
+
+.sectionTitle {
+  font-size: 4rem;
+  font-weight: 1000;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, 
+    #00ffff 0%, 
+    #ff00ff 25%, 
+    #ffff00 50%, 
+    #00ff00 75%, 
+    #00ffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 300% 300%;
+  text-shadow: 0 10px 40px rgba(0, 255, 255, 0.3);
+  letter-spacing: -1.5px;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.sectionSubtitle {
+  font-size: 1.4rem;
+  color: #b0b7ff;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+  font-weight: 300;
+  opacity: 0.9;
+  text-shadow: 0 2px 10px rgba(0, 255, 255, 0.2);
+}
+
+.ctaSection {
+  margin-top: 10rem;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.ctaCard {
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 255, 0.1) 0%,
+    rgba(255, 0, 255, 0.1) 50%,
+    rgba(255, 255, 0, 0.1) 100%);
+  backdrop-filter: blur(25px);
+  border-radius: 40px;
+  padding: 6rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 40px 100px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 100px rgba(0, 255, 255, 0.1);
+}
+
+.ctaCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.2) 0%, transparent 40%),
+    radial-gradient(circle at 40% 40%, rgba(255, 255, 0, 0.2) 0%, transparent 40%);
+  animation: particleMove 20s linear infinite;
+}
+
+.ctaCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    );
+}
+
+@keyframes particleMove {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(100px, 100px) rotate(360deg);
+  }
+}
+
+.ctaContent {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.ctaContent h3 {
+  font-size: 3.5rem;
+  font-weight: 1000;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1.5px;
+  text-shadow: 0 10px 40px rgba(0, 255, 255, 0.3);
+}
+
+.ctaContent p {
+  color: #b0b7ff;
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+  max-width: 550px;
+  line-height: 1.8;
+  font-weight: 300;
+  text-shadow: 0 2px 10px rgba(0, 255, 255, 0.2);
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.ctaButtons .button--primary {
+  background: linear-gradient(135deg, 
+    #00ffff 0%, 
+    #00bfff 50%, 
+    #0080ff 100%);
+  border: none;
+  padding: 1.2rem 3rem;
+  font-weight: 800;
+  font-size: 1.2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    0 15px 40px rgba(0, 191, 255, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(0, 255, 255, 0.5);
+  border-radius: 60px;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ctaButtons .button--primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent);
+  transition: left 0.7s ease;
+  z-index: -1;
+}
+
+.ctaButtons .button--primary:hover::before {
+  left: 100%;
+}
+
+.ctaButtons .button--primary:hover {
+  transform: translateY(-5px) scale(1.08);
+  box-shadow: 
+    0 25px 60px rgba(0, 191, 255, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 0 30px rgba(0, 255, 255, 0.7);
+  background: linear-gradient(135deg, 
+    #00e6e6 0%, 
+    #00b3ff 50%, 
+    #0066ff 100%);
+}
+
+.ctaButtons .button--outline {
+  border: 2px solid rgba(0, 255, 255, 0.4);
+  color: #ffffff;
+  background: transparent;
+  padding: 1.2rem 3rem;
+  font-weight: 800;
+  font-size: 1.2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 60px;
+  backdrop-filter: blur(15px);
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaButtons .button--outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 255, 0.1), 
+    rgba(255, 0, 255, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ctaButtons .button--outline:hover::before {
+  opacity: 1;
+}
+
+.ctaButtons .button--outline:hover {
+  border-color: #ff00ff;
+  color: #ffffff;
+  background: rgba(255, 0, 255, 0.1);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 
+    0 20px 50px rgba(255, 0, 255, 0.3),
+    0 0 30px rgba(255, 0, 255, 0.2);
+}
+
+.ctaIllustration {
+  flex: 0 0 400px;
+  position: relative;
+  z-index: 2;
+}
+
+.floatingElements {
+  position: relative;
+  height: 300px;
+}
+
+.floatingElements span {
+  position: absolute;
+  font-size: 5rem;
+  animation: complexFloat 12s ease-in-out infinite;
+  filter: 
+    drop-shadow(0 10px 20px rgba(0,0,0,0.5))
+    drop-shadow(0 0 30px currentColor)
+    brightness(1.2);
+  z-index: 1;
+  text-shadow: 0 0 30px currentColor;
+}
+
+.float1 {
+  top: 50px;
+  right: 80px;
+  animation-delay: 0s;
+  color: #00ffff;
+  animation-duration: 8s;
+}
+
+.float2 {
+  top: 150px;
+  right: 150px;
+  animation-delay: 3s;
+  color: #ff00ff;
+  animation-duration: 10s;
+}
+
+.float3 {
+  top: 250px;
+  right: 100px;
+  animation-delay: 6s;
+  color: #ffff00;
+  animation-duration: 9s;
+}
+
+@keyframes complexFloat {
+  0%, 100% {
+    transform: 
+      translateY(0) 
+      rotate(0deg) 
+      scale(1);
+    filter: 
+      drop-shadow(0 10px 20px rgba(0,0,0,0.5))
+      drop-shadow(0 0 30px currentColor)
+      brightness(1.2);
+  }
+  25% {
+    transform: 
+      translateY(-40px) 
+      rotate(10deg) 
+      scale(1.2);
+    filter: 
+      drop-shadow(0 20px 30px rgba(0,0,0,0.6))
+      drop-shadow(0 0 40px currentColor)
+      brightness(1.5);
+  }
+  50% {
+    transform: 
+      translateY(-20px) 
+      rotate(-5deg) 
+      scale(0.9);
+  }
+  75% {
+    transform: 
+      translateY(-60px) 
+      rotate(-10deg) 
+      scale(1.1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .ctaCard {
+    padding: 5rem 4rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .sectionTitle {
+    font-size: 3.5rem;
+  }
+  
+  .ctaContent h3 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 996px) {
+  .featureCard {
+    margin-bottom: 3rem;
+  }
+  
+  .sectionTitle {
+    font-size: 3rem;
+  }
+  
+  .ctaCard {
+    flex-direction: column;
+    text-align: center;
+    padding: 4rem 3rem;
+  }
+  
+  .ctaIllustration {
+    margin-top: 5rem;
+    flex: 0 0 auto;
+  }
+  
+  .ctaButtons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .featuresSection {
+    padding: 5rem 1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2.5rem;
+  }
+  
+  .sectionSubtitle {
+    font-size: 1.2rem;
+  }
+  
+  .ctaContent h3 {
+    font-size: 2.5rem;
+  }
+  
+  .ctaCard {
+    padding: 3rem 2rem;
+  }
+  
+  .floatingElements span {
+    font-size: 4rem;
+  }
+  
+  .featureIcon {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .featuresSection {
+    padding: 4rem 0.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2.2rem;
+  }
+  
+  .sectionSubtitle {
+    font-size: 1rem;
+  }
+  
+  .ctaContent h3 {
+    font-size: 2rem;
+  }
+  
+  .ctaContent p {
+    font-size: 1.1rem;
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+    width: 100%;
+    gap: 1.2rem;
+  }
+  
+  .ctaButtons button {
+    width: 100%;
+  }
+  
+  .featureIcon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .featureTitle {
+    font-size: 1.6rem;
+  }
+  
+  .featureCard {
+    padding: 2rem 1.5rem;
+  }
 }

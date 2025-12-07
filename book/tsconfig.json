@@ -2,19 +2,7 @@
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "react-jsx",
-    "allowJs": true,
-    "strict": false,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "target": "es5"
+    "ignoreDeprecations": "6.0"
   },
-  "include": ["src/**/*", "src/global.d.ts"],
-  "exclude": ["node_modules", "build", ".docusaurus"]
+  "exclude": [".docusaurus", "build"]
 }

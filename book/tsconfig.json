@@ -2,7 +2,19 @@
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "6.0",
+    "strict": false,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
-  "exclude": [".docusaurus", "build"]
+  "exclude": [
+    ".docusaurus",
+    "build"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

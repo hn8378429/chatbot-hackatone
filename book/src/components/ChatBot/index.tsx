@@ -58,7 +58,7 @@ export default function ChatBot({ apiBaseUrl = 'http://localhost:8000' }: ChatBo
     setIsLoading(true);
 
     try {
-      const response = await fetch(`${apiBaseUrl}/chat`, {
+const response = await fetch(`${apiBaseUrl}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,110 +1,79 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Global custom CSS
+ * Modern AI / Tech Theme
  */
 
-/* Modern color palette with gradients */
+/* =========================
+   LIGHT MODE THEME
+========================= */
 :root {
-  --ifm-color-primary: #667eea;
-  --ifm-color-primary-dark: #5568e3;
-  --ifm-color-primary-darker: #4e5fe0;
-  --ifm-color-primary-darkest: #3747d4;
-  --ifm-color-primary-light: #7789ed;
-  --ifm-color-primary-lighter: #8394f0;
-  --ifm-color-primary-lightest: #a5b2f5;
-  
-  --ifm-color-secondary: #764ba2;
-  
+  /* Primary – Blue */
+  --ifm-color-primary: #2563eb;
+  --ifm-color-primary-dark: #1e40af;
+  --ifm-color-primary-darker: #1e3a8a;
+  --ifm-color-primary-darkest: #172554;
+  --ifm-color-primary-light: #3b82f6;
+  --ifm-color-primary-lighter: #60a5fa;
+  --ifm-color-primary-lightest: #93c5fd;
+
+  /* Accent – Cyan */
+  --ifm-color-secondary: #06b6d4;
+
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(102, 126, 234, 0.1);
-  
-  /* Better backgrounds */
+  --docusaurus-highlighted-code-line-bg: rgba(37, 99, 235, 0.12);
+
+  /* Backgrounds */
   --ifm-background-color: #ffffff;
-  --ifm-background-surface-color: #f8f9fa;
-  
-  /* Improved navbar */
+  --ifm-background-surface-color: #f1f5f9;
+
+  /* Navbar */
   --ifm-navbar-background-color: #ffffff;
-  --ifm-navbar-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  
-  /* Better link colors */
-  --ifm-link-color: #667eea;
-  --ifm-link-hover-color: #764ba2;
+  --ifm-navbar-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
+
+  /* Links */
+  --ifm-link-color: #2563eb;
+  --ifm-link-hover-color: #06b6d4;
 }
 
-/* Dark mode with vibrant colors */
+/* =========================
+   DARK MODE THEME
+========================= */
 [data-theme='dark'] {
-  --ifm-color-primary: #8394f0;
-  --ifm-color-primary-dark: #6b7eee;
-  --ifm-color-primary-darker: #5f73ed;
-  --ifm-color-primary-darkest: #3e56e9;
-  --ifm-color-primary-light: #9ba9f2;
-  --ifm-color-primary-lighter: #a7b3f3;
-  --ifm-color-primary-lightest: #c5cef7;
-  
-  --ifm-color-secondary: #9d73c7;
-  
-  --docusaurus-highlighted-code-line-bg: rgba(131, 148, 240, 0.2);
-  
-  --ifm-background-color: #1a1a2e;
-  --ifm-background-surface-color: #16213e;
-  
-  --ifm-navbar-background-color: #0f172a;
-  --ifm-navbar-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-  
-  --ifm-link-color: #a5b2f5;
-  --ifm-link-hover-color: #c5cef7;
+  --ifm-color-primary: #60a5fa;
+  --ifm-color-primary-dark: #3b82f6;
+  --ifm-color-primary-darker: #2563eb;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #93c5fd;
+  --ifm-color-primary-lighter: #bfdbfe;
+  --ifm-color-primary-lightest: #dbeafe;
+
+  --ifm-color-secondary: #22d3ee;
+
+  --docusaurus-highlighted-code-line-bg: rgba(96, 165, 250, 0.25);
+
+  --ifm-background-color: #020617;
+  --ifm-background-surface-color: #020617;
+
+  --ifm-navbar-background-color: #020617;
+  --ifm-navbar-shadow: 0 6px 25px rgba(96, 165, 250, 0.25);
+
+  --ifm-link-color: #93c5fd;
+  --ifm-link-hover-color: #22d3ee;
 }
 
-/* Beautiful gradient header */
+/* =========================
+   NAVBAR
+========================= */
 .navbar {
-  border-bottom: 1px solid var(--ifm-toc-border-color);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
-/* Smooth page transitions */
-article {
-  animation: fadeIn 0.3s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Better code blocks */
-.prism-code {
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Stylish admonitions */
-.admonition {
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-/* Enhanced buttons */
-.button {
-  border-radius: 6px;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-}
-
-/* Beautiful hero section */
+/* =========================
+   HERO SECTION
+========================= */
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
   color: white;
 }
 
@@ -113,106 +82,122 @@ article {
   font-weight: 800;
 }
 
-/* Sidebar improvements */
-.menu__link {
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-.menu__link:hover {
-  background: var(--ifm-menu-color-background-hover);
-  transform: translateX(4px);
-}
-
-.menu__link--active {
-  background: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, transparent 100%);
-  border-left: 3px solid var(--ifm-color-primary);
-}
-
-/* Table of contents */
-.table-of-contents__link {
-  transition: all 0.2s ease;
-}
-
-.table-of-contents__link:hover {
-  color: var(--ifm-color-primary);
-}
-
-.table-of-contents__link--active {
-  color: var(--ifm-color-primary);
-  font-weight: 600;
-}
-
-/* Better cards */
-.card {
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-  transition: all 0.3s ease;
-  border: 1px solid var(--ifm-color-emphasis-200);
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
-}
-
-/* Responsive improvements */
 @media (max-width: 996px) {
   .hero__title {
     font-size: 2rem;
   }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+/* =========================
+   BUTTONS
+========================= */
+.button {
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.25s ease;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--ifm-background-color);
+.button--primary {
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  border: none;
 }
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-  border-radius: 5px;
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #764ba2 0%, #667eea 100%);
+/* =========================
+   CARDS
+========================= */
+.card {
+  border-radius: 14px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
 }
 
-/* Navbar auth buttons */
-.navbar__item.navbar__link[href="/login"] {
-  border: 1px solid var(--ifm-navbar-link-color);
-  border-radius: 6px;
-  padding: 0.5rem 1rem !important;
-  margin: 0 0.25rem;
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.25);
+}
+
+/* =========================
+   SIDEBAR / MENU
+========================= */
+.menu__link {
+  border-radius: 8px;
   transition: all 0.2s ease;
 }
 
-.navbar__item.navbar__link[href="/login"]:hover {
-  background: var(--ifm-color-emphasis-100);
-  transform: translateY(-1px);
+.menu__link:hover {
+  background: rgba(37, 99, 235, 0.1);
+  transform: translateX(6px);
 }
 
+.menu__link--active {
+  background: linear-gradient(
+    90deg,
+    rgba(37, 99, 235, 0.15),
+    transparent
+  );
+  border-left: 4px solid var(--ifm-color-primary);
+}
+
+/* =========================
+   CODE BLOCKS
+========================= */
+.prism-code {
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================
+   PAGE ANIMATION
+========================= */
+article {
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2563eb, #06b6d4);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #06b6d4, #2563eb);
+}
+
+/* =========================
+   LOGIN / SIGNUP BUTTON
+========================= */
 .navbar-signup-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  background: linear-gradient(135deg, #2563eb, #06b6d4) !important;
   color: white !important;
-  border-radius: 6px !important;
-  padding: 0.5rem 1rem !important;
-  margin: 0 0.25rem !important;
-  transition: all 0.2s ease !important;
+  border-radius: 8px !important;
+  padding: 0.5rem 1.1rem !important;
   border: none !important;
 }
 
 .navbar-signup-button:hover {
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%) !important;
-  transform: translateY(-1px) !important;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4) !important;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.5);
+  transform: translateY(-1px);
 }
-
-[data-theme='dark'] .navbar__item.navbar__link[href="/login"] {
-  border-color: var(--ifm-color-primary-lighter);
-}
-

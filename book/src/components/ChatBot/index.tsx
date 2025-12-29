@@ -16,21 +16,26 @@ interface ChatBotProps {
   apiBaseUrl?: string;
 }
 
-export default function ChatBot({ apiBaseUrl = 'http://localhost:8000' }: ChatBotProps) {
+export default function ChatBot({
+  apiBaseUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000',
+}: ChatBotProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [sessionId] = useState(() => `session_${Date.now()}_${Math.random()}`);
+  const [sessionId] = useState(
+    () => `session_${Date.now()}_${Math.random()}`
+  );
   const [selectedText, setSelectedText] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to bottom
+  // Auto scroll
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Detect text selection
+  // Detect selected text
   useEffect(() => {
     const handleSelection = () => {
       const selection = window.getSelection();
@@ -41,7 +46,8 @@ export default function ChatBot({ apiBaseUrl = 'http://localhost:8000' }: ChatBo
     };
 
     document.addEventListener('mouseup', handleSelection);
-    return () => document.removeEventListener('mouseup', handleSelection);
+    return () =>
+      document.removeEventListener('mouseup', handleSelection);
   }, []);
 
   const sendMessage = async () => {
@@ -58,39 +64,43 @@ export default function ChatBot({ apiBaseUrl = 'http://localhost:8000' }: ChatBo
     setIsLoading(true);
 
     try {
-const response = await fetch(`${apiBaseUrl}/api/chat`, {
+      const response = await fetch(`${apiBaseUrl}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          message: inputValue,
+          message: userMessage.content,
           session_id: sessionId,
           selected_text: selectedText,
         }),
       });
 
-      if (!response.ok) throw new Error('Failed to get response');
+      if (!response.ok) {
+        throw new Error('API Error');
+      }
 
       const data = await response.json();
 
       const assistantMessage: Message = {
         role: 'assistant',
-        content: data.response,
+        content: data.response || 'No response',
         timestamp: new Date(),
         contextUsed: data.context_used,
       };
 
       setMessages(prev => [...prev, assistantMessage]);
-      setSelectedText(null); // Clear selected text after use
+      setSelectedText(null);
     } catch (error) {
-      console.error('Error sending message:', error);
-      const errorMessage: Message = {
-        role: 'assistant',
-        content: 'Sorry, I encountered an error. Please try again.',
-        timestamp: new Date(),
-      };
-      setMessages(prev => [...prev, errorMessage]);
+      console.error(error);
+      setMessages(prev => [
+        ...prev,
+        {
+          role: 'assistant',
+          content: '❌ Server error. Please try again.',
+          timestamp: new Date(),
+        },
+      ]);
     } finally {
       setIsLoading(false);
     }
@@ -105,11 +115,10 @@ const response = await fetch(`${apiBaseUrl}/api/chat`, {
 
   return (
     <>
-      {/* Chat Button */}
+      {/* Toggle Button */}
       <button
         className={styles.chatButton}
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle chatbot"
       >
         {isOpen ? '✕' : '💬'}
       </button>
@@ -118,11 +127,12 @@ const response = await fetch(`${apiBaseUrl}/api/chat`, {
       {isOpen && (
         <div className={styles.chatWindow}>
           <div className={styles.chatHeader}>
-            <h3>📚 Book Assistant</h3>
-            <p>Ask me anything about the book!</p>
+            <h3>📘 AI Assistant</h3>
+            <p>Ask anything about the book</p>
+
             {selectedText && (
               <div className={styles.selectedTextBadge}>
-                📝 Using selected text
+                📝 Selected text
                 <button onClick={() => setSelectedText(null)}>✕</button>
               </div>
             )}
@@ -131,23 +141,18 @@ const response = await fetch(`${apiBaseUrl}/api/chat`, {
           <div className={styles.chatMessages}>
             {messages.length === 0 && (
               <div className={styles.welcomeMessage}>
-                <p>👋 Hi! I'm your AI book assistant.</p>
-                <p>I can help you with:</p>
-                <ul>
-                  <li>Questions about any chapter</li>
-                  <li>Clarifying concepts</li>
-                  <li>Finding specific information</li>
-                  <li>Explaining code examples</li>
-                </ul>
-                <p><strong>Tip:</strong> Select text on the page and ask questions about it!</p>
+                <p>👋 Hello!</p>
+                <p>Select text or ask a question.</p>
               </div>
             )}
 
-            {messages.map((msg, idx) => (
+            {messages.map((msg, index) => (
               <div
-                key={idx}
+                key={index}
                 className={`${styles.message} ${
-                  msg.role === 'user' ? styles.userMessage : styles.assistantMessage
+                  msg.role === 'user'
+                    ? styles.userMessage
+                    : styles.assistantMessage
                 }`}
               >
                 <div className={styles.messageContent}>
@@ -161,11 +166,9 @@ const response = await fetch(`${apiBaseUrl}/api/chat`, {
 
             {isLoading && (
               <div className={styles.loadingMessage}>
-                <div className={styles.typingIndicator}>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
+                <span></span>
+                <span></span>
+                <span></span>
               </div>
             )}
 
@@ -175,18 +178,21 @@ const response = await fetch(`${apiBaseUrl}/api/chat`, {
           <div className={styles.chatInput}>
             <textarea
               value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
+              onChange={e => setInputValue(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder={selectedText ? "Ask about the selected text..." : "Ask a question..."}
+              placeholder={
+                selectedText
+                  ? 'Ask about selected text...'
+                  : 'Type your question...'
+              }
               rows={2}
               disabled={isLoading}
             />
             <button
               onClick={sendMessage}
-              disabled={isLoading || !inputValue.trim()}
-              className={styles.sendButton}
+              disabled={isLoading}
             >
-              {isLoading ? '...' : '➤'}
+              ➤
             </button>
           </div>
         </div>

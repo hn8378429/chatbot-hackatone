@@ -13,8 +13,8 @@ const config: Config = {
   },
 
   // Vercel deployment settings
-  url: 'https://chatbot-hackatone.vercel.app', // your Vercel URL
-  baseUrl: '/', // root path for Vercel
+  url: 'https://chatbot-hackatone.vercel.app/', // your Vercel URL
+  baseUrl: 'https://chatbot-hackatone.vercel.app/', // root path for Vercel
 
   // GitHub config for edit links (optional)
   organizationName: 'hn8378429', // your GitHub username
